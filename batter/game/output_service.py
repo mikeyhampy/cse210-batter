@@ -19,6 +19,7 @@ class OutputService:
             self (OutputService): An instance of OutputService.
         """
         self._textures = {}
+        self._color_number = 0
 
     def open_window(self, title):
         """
@@ -42,14 +43,16 @@ class OutputService:
         """
         raylibpy.draw_rectangle(x, y, width, height, raylibpy.BLUE)
 
-    def draw_text(self, x, y, text, is_dark_text):
+    def draw_text(self, x, y, text, text_color):
         """
         Outputs the provided text at the desired location.
         """
         color = raylibpy.WHITE
 
-        if is_dark_text:
-            color = raylibpy.BLACK
+        if text == "YES" and text_color == -1:
+            color = raylibpy.GREEN
+        elif text == "NO" and text_color == 1:
+            color = raylibpy.RED
 
         raylibpy.draw_text(text, x + 5, y + 5, constants.DEFAULT_FONT_SIZE, color)
 
@@ -84,17 +87,18 @@ class OutputService:
             #self.draw_image(x - width / 2, y - height / 2, image)
         elif actor.has_text():
             text = actor.get_text()
-            self.draw_text(x, y, text, True)
+            self.draw_text(x, y, text, self._color_number)
         elif width > 0 and height > 0:
             self.draw_box(x, y, width, height)
         
-    def draw_actors(self, actors):
+    def draw_actors(self, actors, color_number):
         """Renders the given list of actors on the screen.
 
         Args:
             self (OutputService): An instance of OutputService.
             actors (list): The actors to render.
         """ 
+        self._color_number = color_number
         for actor in actors:
             self.draw_actor(actor)
     

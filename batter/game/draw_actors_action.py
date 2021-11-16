@@ -18,6 +18,7 @@ class DrawActorsAction(Action):
             output_service (OutputService): An instance of OutputService.
         """
         self._output_service = output_service
+        self._color_number = 0
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -27,5 +28,8 @@ class DrawActorsAction(Action):
         """
         self._output_service.clear_screen()
         for group in cast.values():
-            self._output_service.draw_actors(group)
+            self._output_service.draw_actors(group, self._color_number)
         self._output_service.flush_buffer()
+
+    def set_color_number(self, number):
+        self._color_number = number

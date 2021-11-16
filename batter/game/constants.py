@@ -15,6 +15,7 @@ IMAGE_BALL = os.path.join(os.getcwd(), "./batter/assets/ball.png")
 SOUND_START = os.path.join(os.getcwd(), "./batter/assets/start.wav")
 SOUND_BOUNCE = os.path.join(os.getcwd(), "./batter/assets/boing.wav")
 SOUND_OVER = os.path.join(os.getcwd(), "./batter/assets/over.wav")
+SOUND_VICTORY = os.path.join(os.getcwd(), "./batter/assets/ff_vii_victory.wav")
 
 BALL_X = MAX_X / 2
 BALL_Y = MAX_Y - 125
@@ -22,7 +23,7 @@ BALL_Y = MAX_Y - 125
 BALL_DX = 8
 BALL_DY = BALL_DX * -1
 
-PADDLE_X = MAX_X / 2
+PADDLE_X = (MAX_X - 96) / 2
 PADDLE_Y = MAX_Y - 25
 
 BRICK_WIDTH = 48
@@ -38,3 +39,4 @@ PADDLE_HEIGHT = 24
 BALL_WIDTH = 24
 BALL_HEIGHT = 24
 
+KEEP_PLAYING = True

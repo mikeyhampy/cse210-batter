@@ -17,7 +17,7 @@ class InputService:
         Args:
             self (InputService): An instance of InputService.
         """
-        pass
+        self._dx = -1
         
     def get_direction(self):
         """Gets the selected direction based on the currently pressed keys.
@@ -37,14 +37,28 @@ class InputService:
         if self.is_right_pressed():
             dx = 1
         
-        if self.is_up_pressed():
-            dy = -1
+        # if self.is_up_pressed():
+        #     dy = -1
         
-        if self.is_down_pressed():
-            dy = 1
+        # if self.is_down_pressed():
+        #     dy = 1
 
         direction = Point(dx, dy)
         return direction
+
+    def set_choice(self):
+        if self.is_left_pressed():
+            self._dx = -1
+        
+        if self.is_right_pressed():
+            self._dx = 1
+
+        if self.is_up_pressed():
+            return True
+        elif self.is_down_pressed():
+            return True
+        else:
+            return False
 
     def is_left_pressed(self):
         return raylibpy.is_key_down(raylibpy.KEY_LEFT)
