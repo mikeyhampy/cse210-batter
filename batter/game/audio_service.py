@@ -36,8 +36,16 @@ class AudioService:
         """
         raylibpy.init_audio_device()
 
-    def stop_audio(self):
+    def stop_audio(self, filename):
         """
         Closes the audio device at the end of the program.
         """
+        if filename not in self._sounds.keys():
+            loaded = raylibpy.load_sound(filename)
+            self._sounds[filename] = loaded
+
+        sound = self._sounds[filename]
+        raylibpy.stop_sound(sound)
+
+    def close_audio(self):
         raylibpy.close_audio_device()

@@ -2,6 +2,7 @@ import os
 os.environ['RAYLIB_BIN_PATH'] = r'../cse210-batter/batter'
 
 import random
+import raylibpy
 from time import sleep
 from game import constants
 from game.director import Director
@@ -84,8 +85,11 @@ def main():
     director = Director(cast, script)
     director.start_game()
 
-    audio_service.stop_audio()
-    os.system('cls')
+    audio_service.stop_audio(check_end._sound)
+    audio_service.close_audio()
+    output_service.flush_buffer()
+    raylibpy.close_window()
+    #os.system('cls')
 
 if __name__ == "__main__":
     loop = 0

@@ -109,3 +109,4 @@ class OutputService:
             self (OutputService): An instance of OutputService.
         """ 
         raylibpy.end_drawing()
+        #raylibpy.close_window()

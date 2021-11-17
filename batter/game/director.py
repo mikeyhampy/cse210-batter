@@ -39,6 +39,7 @@ class Director:
             #     self._keep_playing = False
             if_end_game = self._script["output"][0]._end_game
             over_win = self._script["output"][0]._game_message
+            exit_sound = self._script["output"][0]._sound
             end_game_message = self._cast["end_game"]
 
             while if_end_game:
@@ -64,8 +65,6 @@ class Director:
                     if_end_game = False
                     self._keep_playing = False
                     constants.KEEP_PLAYING = True
-                    raylibpy.end_drawing()
-                    raylibpy.close_window()
                 elif enter and select == 1:
                     if_end_game = False
                     self._keep_playing = False

@@ -22,11 +22,13 @@ class HandleCollisionsAction(Action):
         paddle = cast["paddle"][0]
         bricks = cast["bricks"]
         if self._physics_service.is_collision(ball, paddle):
+            #self._audio_service.stop_audio(constants.SOUND_BOUNCE)
             self._audio_service.play_sound(constants.SOUND_BOUNCE)
             ball._velocity._y = ball._velocity._y * -1
 
         for brick in bricks:
             if self._physics_service.is_collision(ball, brick):
+                #self._audio_service.stop_audio(constants.SOUND_BOUNCE)
                 self._audio_service.play_sound(constants.SOUND_BOUNCE)
                 ball._velocity._y = ball._velocity._y * -1
                 bricks.remove(brick)
