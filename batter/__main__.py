@@ -93,18 +93,17 @@ def main():
         audio_service.play_sound(constants.SOUND_START)
         director = Director(cast, script)
         director.start_game()
+
+        #stop audio
         audio_service.stop_audio(check_end._sound)
-        if constants.KEEP_PLAYING:
-            output_service.flush_buffer()
+        if handle_collisions_action.num_brick_col > 0:
+            audio_service.stop_audio(constants.SOUND_BOUNCE)
+        if handle_collisions_action.num_paddle_col > 0:
+            audio_service.stop_audio(constants.SOUND_BOUNCE)
+        output_service.flush_buffer()
 
     #close game run once
-    if handle_collisions_action.num_brick_col > 0:
-        audio_service.stop_audio(constants.SOUND_BOUNCE)
-    if handle_collisions_action.num_paddle_col > 0:
-        audio_service.stop_audio(constants.SOUND_BOUNCE)
     audio_service.close_audio()
-
-    output_service.flush_buffer()
     raylibpy.close_window()
 
 if __name__ == "__main__":
