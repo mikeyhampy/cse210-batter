@@ -22,19 +22,16 @@ class CheckEnd(Action):
 
         if y > constants.MAX_Y:
             balls.remove(ball)
-            #ball._position._y = 0 + constants.PADDLE_HEIGHT + 1
             self._audio_service.play_sound(constants.SOUND_OVER)
             self._end_game = True
             self._game_message = "GAME OVER!"
             self._sound = constants.SOUND_OVER
             self._audio_service.stop_audio(constants.SOUND_START)
-            self._audio_service.stop_audio(constants.SOUND_BOUNCE)
         elif len(bricks) == 0:
             self._audio_service.play_sound(constants.SOUND_VICTORY)
             self._end_game = True
             self._game_message = "YOU WIN!"
             self._sound = constants.SOUND_VICTORY
             self._audio_service.stop_audio(constants.SOUND_START)
-            self._audio_service.stop_audio(constants.SOUND_BOUNCE)
         else:
             self._sound = constants.SOUND_START
